@@ -24,7 +24,7 @@ import java.util.Arrays;
 public class Gui extends Application
 {
     TravellingSalesmanProblem tsp;
-    NearestNeighbour nearestNeighbour;
+
 
 
     @Override public void start(Stage primaryStage) throws Exception
@@ -217,10 +217,8 @@ public class Gui extends Application
         {
             if (algorithm.getValue() == "Nearest Neighbour")
             {
-                //root.getChildren().removeIf((Node t) -> t.getClass().getSimpleName().equals
-                // ("Line"));
                 Instant startInstant = Instant.now();
-                nearestNeighbour.nearestNeighbour(0);
+                tsp.nearestNeighbour(1);
                 int next = 0;
                 int x1, y1, x2, y2;
 
@@ -239,7 +237,7 @@ public class Gui extends Application
                 } while (next != 0);
                 label.setText("");
                 label.setText(
-                        tsp.getTime(startInstant) + " Distance of the Tour: " + tsp.allCost());
+                        tsp.getTime(startInstant) + " Distance of the Tour: " + Double.toString(tsp.allCost()));
 
             } else
             {

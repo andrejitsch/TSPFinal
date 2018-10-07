@@ -245,20 +245,66 @@ public class TravellingSalesmanProblem
      * The first node is always zero(default setting).
      * The last node connect with the first node.
      */
-    public void nearestNeighbour()
+    public void nearestNeighbour(int firstNode)
     {
-        int s = 0;
+        int s = firstNode;
+        nodes[s].setFirstNode(true);
 
         for (int i=0; i<getAmountNodes()-1; i++)
         {
-            nodes[s].inTour = true;
-            nodes[s].next = nextNode(s);
-            s = nodes[s].next;
-            System.out.println(s);
+            nodes[s].setInTour(true);
+            nodes[s].setNext(nextNode(s));
+            s = nodes[s].getNext();
         }
-        nodes[s].inTour = true;
-        nodes[s].next = 0;
+        nodes[s].setInTour(true);
+        nodes[s].setNext(firstNode);
     }
+
+    /**
+     *
+     * @return The total Distance of the Tour
+     */
+
+    public double allCost()
+    {
+        double allCosts = 0;
+        double length = 0;
+        for (int i = 0; i < getAmountNodes() - 1; i++)
+        {
+            length += calculateDistance(i, nodes[i].next);
+        }
+        length += calculateDistance(getAmountNodes() - 1, 0);
+        allCosts = Math.round(length);
+        return allCosts;
+    }
+
+    public String getTime(Instant startInstant)
+    {
+        String totalTime;
+        Duration permutationDuration = Duration.between(startInstant, Instant.now());
+        long minutes = permutationDuration.toMinutes();
+        long seconds = permutationDuration.getSeconds();
+        if (seconds > 59)
+        {
+            long tempSeconds = seconds - 60 * minutes;
+            long tempMilliseconds = permutationDuration.toMillis() - seconds * 1000;
+            totalTime = ("Duration: " + minutes + " minutes " + tempSeconds + " seconds " +
+                    tempMilliseconds + " milliseconds " + "(" + permutationDuration + ")");
+        } else if (seconds > 0)
+        {
+            long tempMilliSeconds = permutationDuration.toMillis() - seconds * 1000;
+            totalTime = ("Duration " + seconds + " seconds " + tempMilliSeconds + " milliseconds " +
+                    "" + "(" + permutationDuration + ")");
+        } else
+        {
+            totalTime = ("Duration: " + permutationDuration.toMillis() + " milliseconds (" +
+                    permutationDuration + ")");
+        }
+
+        return totalTime;
+
+    }
+
 
     public void paintGraph(Pane pane)
     {
@@ -325,50 +371,7 @@ public class TravellingSalesmanProblem
         return nodes[i];
     }
 
-    /**
-     *
-     * @return The total Distance of the Tour
-     */
 
-    public String allCost()
-    {
-        double allCosts = 0;
-        double length = 0;
-        for (int i = 0; i < getAmountNodes() - 1; i++)
-        {
-            length += calculateDistance(i, nodes[i].next);
-        }
-        length += calculateDistance(getAmountNodes() - 1, 0);
-        allCosts = Math.round(length);
-        return Double.toString(allCosts);
-    }
-
-    public String getTime(Instant startInstant)
-    {
-        String totalTime;
-        Duration permutationDuration = Duration.between(startInstant, Instant.now());
-        long minutes = permutationDuration.toMinutes();
-        long seconds = permutationDuration.getSeconds();
-        if (seconds > 59)
-        {
-            long tempSeconds = seconds - 60 * minutes;
-            long tempMilliseconds = permutationDuration.toMillis() - seconds * 1000;
-            totalTime = ("Duration: " + minutes + " minutes " + tempSeconds + " seconds " +
-                    tempMilliseconds + " milliseconds " + "(" + permutationDuration + ")");
-        } else if (seconds > 0)
-        {
-            long tempMilliSeconds = permutationDuration.toMillis() - seconds * 1000;
-            totalTime = ("Duration " + seconds + " seconds " + tempMilliSeconds + " milliseconds " +
-                    "" + "(" + permutationDuration + ")");
-        } else
-        {
-            totalTime = ("Duration: " + permutationDuration.toMillis() + " milliseconds (" +
-                    permutationDuration + ")");
-        }
-
-        return totalTime;
-
-    }
 
 
 
