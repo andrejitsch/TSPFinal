@@ -1,17 +1,21 @@
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 
 /**
  * Created by AS on 02.10.2018.
  */
 public class Edges extends Line
 {
+
     TravellingSalesmanProblem salesmanProblem;
     Nodes sourceNode = null;
     Nodes targetNode = null;
     int weight;
+    Text textWeight;
 
 
 
@@ -20,11 +24,11 @@ public class Edges extends Line
      * @param sN needs a sourceNode from Nodes.
      * @param tN needs a targetNode from Nodes.
      */
-    public Edges(Nodes sN, Nodes tN)
+    public Edges(Nodes sN, Nodes tN, int weight)
     {
         this.sourceNode = sN;
         this.targetNode = tN;
-        this.weight = getWeight();
+        this.weight = weight;
     }
 
     /**
@@ -43,6 +47,20 @@ public class Edges extends Line
         Element target = doc.createElement("Target");
         target.setTextContent(getTargetNode().getName());
         edge.appendChild(target);
+    }
+
+    public void paintWeights(Pane pane){
+        double x = ((getSourceNode().getXpos() + getTargetNode().getXpos()) / 2);
+        double y = ((getSourceNode().getYpos() + getTargetNode().getYpos()) / 2);
+        if(x < 0){
+            x = 0 - x;
+        }
+        if(y < 0)
+        {
+            y = 0 - y;
+        }
+        textWeight = new Text(x, y, ""+ getWeight());
+        pane.getChildren().add(textWeight);
     }
 
     public void paintEdges(Pane pane)

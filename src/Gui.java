@@ -1,5 +1,7 @@
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -53,9 +55,11 @@ public class Gui extends Application
         algorithm.getItems().add("Nearest Neighbour");
         algorithm.getItems().add("Brute-Force");
         algorithm.setValue("Nearest Neighbour");
-        buttonBox.getChildren().add(algorithm);
-        buttonBox.getChildren().add(start);
-        buttonBox.getChildren().add(clear);
+        CheckBox cb1 = new CheckBox("Show weights");
+        CheckBox cb2 = new CheckBox("Show the names of the Nodes");
+        cb1.setSelected(false);
+        cb2.setSelected(false);
+        buttonBox.getChildren().addAll(algorithm, start, clear, cb1, cb2);
         Label label = new Label();
         label.setAlignment(Pos.CENTER);
         label.setPadding(new Insets(0, 100, 15, 100));
@@ -185,6 +189,16 @@ public class Gui extends Application
                     newWindow.close();
                 }
 
+            });
+
+            cb1.selectedProperty().addListener(new ChangeListener<Boolean>()
+            {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
+                                    Boolean newValue)
+                {
+                    
+                }
             });
 
             /**

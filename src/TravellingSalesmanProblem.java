@@ -68,7 +68,7 @@ public class TravellingSalesmanProblem
         int d = 1;
         for (int i = 0; i<nodes.length-1; i++){
             for (int j=d; j<nodes.length; j++){
-                edges[x]= new Edges(nodes[i], nodes[j]);
+                edges[x]= new Edges(nodes[i], nodes[j], getWeight(calculateDistance(i,j)));
                 x++;
             }
             d++;
@@ -218,8 +218,8 @@ public class TravellingSalesmanProblem
      */
     private boolean controlEdges(int s, int n)
     {
-        Edges controlEdges = new Edges(nodes[s], nodes[n]);
-        Edges controlEdges2 = new Edges(nodes[n], nodes[s]);
+        Edges controlEdges = new Edges(nodes[s], nodes[n], getWeight(calculateDistance(s,n)));
+        Edges controlEdges2 = new Edges(nodes[n], nodes[s],getWeight(calculateDistance(s,n)));
 
         boolean success = false;
 
