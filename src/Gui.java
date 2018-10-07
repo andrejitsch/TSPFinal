@@ -129,6 +129,7 @@ public class Gui extends Application
             root.getChildren().clear();
             label.setText("");
             tsp.paintGraph(root, cb1.isSelected(), cb2.isSelected());
+            tsp.resetTour();
         });
 
         /**
@@ -254,7 +255,7 @@ public class Gui extends Application
                 label.setText("");
                 label.setText(
                         tsp.getTime(startInstant) + " Distance of the Tour: " + Double.toString(tsp.allCost()));
-                tsp.resetTour();
+
 
             } else
             {
@@ -269,27 +270,32 @@ public class Gui extends Application
                     for (int j = 0; j < shortestRoute.size() - 1; j++)
                     {
                         int count = 1;
-                        Line linex = new Line(shortestRoute.get(j).getXpos(), shortestRoute.get(j).getYpos(),
+                        Line lineBruteForce = new Line(shortestRoute.get(j).getXpos(), shortestRoute.get(j).getYpos(),
                                 shortestRoute.get(j + count).getXpos(), shortestRoute.get(j + count).getYpos());
-                        Line linez = new Line(shortestRoute.get(shortestRoute.size() - 1).getXpos(),
+                        Line lineLastToFirstNode = new Line(shortestRoute.get(shortestRoute.size() - 1).getXpos(),
                                 shortestRoute.get(shortestRoute.size() - 1).getYpos(), shortestRoute.get(0).getXpos(),
                                 shortestRoute.get(0).getYpos());
-                        linex.setStrokeWidth(3);
-                        linez.setStrokeWidth(3);
-                        linex.setStroke(Color.GREEN);
-                        linez.setStroke(Color.GREEN);
-                        linex.toBack();
-                        linez.toBack();
-                        root.getChildren().addAll(linex, linez);
+                        lineBruteForce.setStrokeWidth(3);
+                        lineLastToFirstNode.setStrokeWidth(3);
+                        lineBruteForce.setStroke(Color.GREEN);
+                        lineLastToFirstNode.setStroke(Color.GREEN);
+                        lineBruteForce.toBack();
+                        lineLastToFirstNode.toBack();
+                        root.getChildren().addAll(lineBruteForce, lineLastToFirstNode);
 
                     }
                 }
-
-                String distanz = bruteForce.getTotalDistance(shortestRoutes.get(0));
+                /*ArrayList<Route> test = new ArrayList<>();
+                for(int i = 0; i<shortestRoutes.size()-1; i++){
+                    if(bruteForce.calculateTotalDistance(shortestRoutes.get(i)) < bruteForce.calculateTotalDistance(currentRoute)){
+                        test.add(shortestRoutes.get(i));
+                    }
+                }*/
+                String distance = bruteForce.getTotalDistance(shortestRoutes.get(0));
 
                 label.setText("");
                 label.setText(tsp.getTime(startInstant) + " Distance of the shortest Route: " +
-                        distanz);
+                        distance);
             }
 
         });

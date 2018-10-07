@@ -172,10 +172,10 @@ public class TravellingSalesmanProblem
 
         dx = nodes[n1].getXpos() - nodes[n2].getXpos();
         dy = nodes[n1].getYpos() - nodes[n2].getYpos();
-        dx2 = dx * dx;
-        dy2 = dy * dy;
+        dx2 = (dx * dx)/10;
+        dy2 = (dy * dy)/10;
 
-        return Math.sqrt(dx2 + dy2);
+        return Math.floor(Math.sqrt(dx2 + dy2));
     }
 
     /**
@@ -275,15 +275,14 @@ public class TravellingSalesmanProblem
 
     public double allCost()
     {
-        double allCosts = 0;
+
         double length = 0;
         for (int i = 0; i < getAmountNodes() - 1; i++)
         {
             length += calculateDistance(i, nodes[i].next);
         }
         length += calculateDistance(getAmountNodes() - 1, 0);
-        allCosts = Math.round((length/10));
-        return allCosts;
+        return length;
     }
 
     public String getTime(Instant startInstant)

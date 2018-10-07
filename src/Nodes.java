@@ -92,8 +92,8 @@ public class Nodes extends Circle
     {
         double deltaXpos = (node.getXpos() - this.getXpos());
         double deltaYpos = (node.getXpos() - this.getYpos());
-        double dx2 = deltaXpos * deltaXpos;
-        double dy2 = deltaYpos * deltaYpos;
+        double dx2 = (deltaXpos * deltaXpos)/10;
+        double dy2 = (deltaYpos * deltaYpos)/10;
         return Math.sqrt(dx2 + dy2);
     }
 

@@ -28,7 +28,7 @@ public class Edges extends Line
     {
         this.sourceNode = sN;
         this.targetNode = tN;
-        this.weight = Math.round((weight/10));
+        this.weight = weight;
     }
 
     /**
