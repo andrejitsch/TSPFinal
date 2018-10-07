@@ -389,7 +389,21 @@ public class TravellingSalesmanProblem
 
 
 
+    /**
+     * Only for testing
+     */
+    public void createGivenGraph()
+    {
+        nodes[0] = new Nodes(0, "A", 50, 150);
+        nodes[1] = new Nodes(1, "E", 150, 280);
+        nodes[2] = new Nodes(2, "F", 300, 280);
+        nodes[3] = new Nodes(3, "D", 450, 150);
+        nodes[4] = new Nodes(4, "B", 150, 50);
+        nodes[5] = new Nodes(5, "C", 300, 50);
 
+        createEdges();
+
+    }
 
 
 

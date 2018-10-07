@@ -34,7 +34,7 @@ public class BruteForce
 
     public int calculateTotalDistance(Route route)
     {
-        int amountNodes = route.getNodes().size();
+        int amountNodes = route.getNodes().size()-1;
 
         return (int) (route.getNodes().stream().mapToDouble(x ->
         {
@@ -46,7 +46,7 @@ public class BruteForce
             }
 
             return returnValue;
-        }).sum() + route.getNodes().get(0).measureDistanceForBruteForce(route.getNodes().get(amountNodes -1)));
+        }).sum() + route.getNodes().get(0).measureDistanceForBruteForce(route.getNodes().get(amountNodes)));
     }
 
     public String getTotalDistance(Route route)

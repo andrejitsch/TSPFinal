@@ -119,10 +119,6 @@ public class Nodes extends Circle
      * Sets the name for the node.
      * @param n the name to set the name.
      */
-    public void setName(String n)
-    {
-        this.name = name;
-    }
 
     /**
      * Gets the name of the node.
