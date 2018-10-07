@@ -17,7 +17,7 @@ public class WriteXML{
     /**
      * Create the XML-File.
      */
-    public void createXML(TravellingsSalesmanProblem salesmanProblem, String directoryPath)
+    public void createXML(TravellingSalesmanProblem salesmanProblem, String directoryPath)
     {
 
         try{
@@ -34,16 +34,6 @@ public class WriteXML{
                 Nodes n1 = salesmanProblem.returnNode(i);
                 System.out.println(i + ". Nodes = " + n1);
                 n1.generateXML(doc, nodes);
-            }
-
-            Element edges = doc.createElement("Edge");
-            rootElement.appendChild(edges);
-
-            for (int i=0; i<salesmanProblem.getAmountEdges(); i++)
-            {
-                Edges e1 = salesmanProblem.returnEdge(i);
-                System.out.println(i+ ". Edge = " + e1);
-                e1.generateXML(doc , edges);
             }
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

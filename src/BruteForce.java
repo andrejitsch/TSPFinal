@@ -6,7 +6,7 @@ import java.util.Collections;
  */
 public class BruteForce
 {
-    TravellingsSalesmanProblem salesmanProblem;
+    TravellingSalesmanProblem salesmanProblem;
     static int permutationNumb = 1;
 
     ArrayList<Route> shortestRoutes = new ArrayList<Route>();

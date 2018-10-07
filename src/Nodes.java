@@ -70,7 +70,7 @@ public class Nodes extends Circle
         node.appendChild(yPos);
     }
 
-    public void paint(Pane pane)
+    public void paintNodes(Pane pane)
     {
         if (getFirstNode())
         {

@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
  */
 public class Edges extends Line
 {
-    TravellingsSalesmanProblem salesmanProblem;
+    TravellingSalesmanProblem salesmanProblem;
     Nodes sourceNode = null;
     Nodes targetNode = null;
     int weight;
@@ -20,11 +20,11 @@ public class Edges extends Line
      * @param sN needs a sourceNode from Nodes.
      * @param tN needs a targetNode from Nodes.
      */
-    public Edges(Nodes sN, Nodes tN, int w)
+    public Edges(Nodes sN, Nodes tN)
     {
         this.sourceNode = sN;
         this.targetNode = tN;
-        this.weight = w;
+        this.weight = getWeight();
     }
 
     /**

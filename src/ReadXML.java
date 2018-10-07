@@ -23,12 +23,12 @@ public class ReadXML
      * Creates an ArrayList of the Nodes out of the XML-File
      * @return the ArrayList of Nodes
      */
-    public ArrayList<Nodes> readNodes()
+    public ArrayList<Nodes> readNodes(File inputFile)
     {
         try
         {
 
-            File inputFile = new File("graph.xml");
+
             DocumentBuilderFactory dbF = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbF.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
@@ -72,23 +72,6 @@ public class ReadXML
         return tagValue;
     }
 
-    /**
-     * This method compares each node with the nodename.
-     * @param nodes needs the index.
-     * @param nodeName needs the node name.
-     * @return the node if the condition is true.
-     */
-    private static Nodes searchNode(ArrayList<Nodes> nodes, String nodeName)
-    {
-        for (int i=0; i<nodes.size(); i++)
-        {
-            Nodes n = nodes.get(i);
-
-            if (n.getName().equals(nodeName))
-                return n;
-        }
-        return null;
-    }
 
 
 

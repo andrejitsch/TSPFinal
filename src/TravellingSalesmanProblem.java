@@ -1,12 +1,15 @@
 import javafx.scene.layout.Pane;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by AS on 03.10.2018.
  */
 
-public class TravellingsSalesmanProblem
+public class TravellingSalesmanProblem
 {
     Nodes[] nodes;
     Edges[] edges;
@@ -14,12 +17,12 @@ public class TravellingsSalesmanProblem
 
 
     /**
-     * This is the constructor of the class TravellingsSalesmanProblem.
+     * This is the constructor of the class TravellingSalesmanProblem.
      * The constructor multiplies the nodes array, and take this size for the edges array.
      * @param nodesLength needs the amount of nodes.
      *
      */
-    public TravellingsSalesmanProblem(int nodesLength)
+    public TravellingSalesmanProblem(int nodesLength)
     {
         this.nodes = new Nodes[nodesLength];
         this.edges = new Edges[nodesLength * nodesLength];
@@ -43,7 +46,9 @@ public class TravellingsSalesmanProblem
             nodes[i] = new Nodes(i, "Node" + i, xPos, yPos);
 
         }
-        for (int i=0; i<getAmountEdges(); i++)
+
+        createEdges();
+        /*for (int i=0; i<getAmountEdges(); i++)
         {
             int s = r.nextInt(getAmountNodes());
             int t = r.nextInt(getAmountNodes());
@@ -75,11 +80,33 @@ public class TravellingsSalesmanProblem
                     System.out.println(newEdges);
 
                 }
+            }*/
+
+    }
+
+    public void convertNodes(ArrayList<Nodes> nodesA)
+    {
+
+        for (int i = 0; i < nodes.length; i++)
+        {
+            nodes[i] = new Nodes(nodesA.get(i).getNumber(), nodesA.get(i).getName(),
+                    nodesA.get(i).getXpos(), nodesA.get(i).getYpos());
+        }
+
+    }
+
+    public void createEdges() {
+        int x = 0;
+        int d = 1;
+        for (int i = 0; i<nodes.length-1; i++){
+            for (int j=d; j<nodes.length; j++){
+                edges[x]= new Edges(nodes[i], nodes[j]);
+                x++;
             }
-
-
+            d++;
         }
     }
+
 
     /**
      * Get the weight of the Edges.
@@ -223,8 +250,8 @@ public class TravellingsSalesmanProblem
      */
     private boolean controlEdges(int s, int n)
     {
-        Edges controlEdges = new Edges(nodes[s], nodes[n], getWeight(calculateDistance(s,n)));
-        Edges controlEdges2 = new Edges(nodes[n], nodes[s], getWeight(calculateDistance(s,n)));
+        Edges controlEdges = new Edges(nodes[s], nodes[n]);
+        Edges controlEdges2 = new Edges(nodes[n], nodes[s]);
 
         boolean success = false;
 
@@ -269,7 +296,7 @@ public class TravellingsSalesmanProblem
     {
         for (int i=0; i<getAmountNodes(); i++)
         {
-            nodes[i].paint(pane);
+            nodes[i].paintNodes(pane);
         }
 
         for (int i=0; i<getAmountEdges(); i++)
@@ -328,6 +355,51 @@ public class TravellingsSalesmanProblem
             return  null;
         }
         return nodes[i];
+    }
+
+    /**
+     *
+     * @return The total Distance of the Tour
+     */
+
+    public String allCost()
+    {
+        double allCosts = 0;
+        double length = 0;
+        for (int i = 0; i < getAmountNodes() - 1; i++)
+        {
+            length += calculateDistance(i, nodes[i].next);
+        }
+        length += calculateDistance(getAmountNodes() - 1, 0);
+        allCosts = Math.round(length);
+        return Double.toString(allCosts);
+    }
+
+    public String getTime(Instant startInstant)
+    {
+        String totalTime;
+        Duration permutationDuration = Duration.between(startInstant, Instant.now());
+        long minutes = permutationDuration.toMinutes();
+        long seconds = permutationDuration.getSeconds();
+        if (seconds > 59)
+        {
+            long tempSeconds = seconds - 60 * minutes;
+            long tempMilliseconds = permutationDuration.toMillis() - seconds * 1000;
+            totalTime = ("Duration: " + minutes + " minutes " + tempSeconds + " seconds " +
+                    tempMilliseconds + " milliseconds " + "(" + permutationDuration + ")");
+        } else if (seconds > 0)
+        {
+            long tempMilliSeconds = permutationDuration.toMillis() - seconds * 1000;
+            totalTime = ("Duration " + seconds + " seconds " + tempMilliSeconds + " milliseconds " +
+                    "" + "(" + permutationDuration + ")");
+        } else
+        {
+            totalTime = ("Duration: " + permutationDuration.toMillis() + " milliseconds (" +
+                    permutationDuration + ")");
+        }
+
+        return totalTime;
+
     }
 
 
