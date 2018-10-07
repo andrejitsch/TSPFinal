@@ -311,6 +311,9 @@ public class TravellingSalesmanProblem
         for (int i=0; i<getAmountNodes(); i++)
         {
             nodes[i].paintNodes(pane);
+            if (n == true){
+                nodes[i].paintNodeNames(pane);
+            }
         }
 
         for (int i=0; i<getAmountEdges(); i++)

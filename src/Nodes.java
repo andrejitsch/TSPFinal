@@ -2,6 +2,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -81,6 +82,12 @@ public class Nodes extends Circle
             pane.getChildren().add(circle);
         }
 
+    }
+
+    public void paintNodeNames(Pane pane)
+    {
+        Text text = new Text(getXpos()-getName().length()*4, getYpos()+20, getName());
+        pane.getChildren().add(text);
     }
 
     /**

@@ -1,4 +1,6 @@
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -39,7 +41,10 @@ public class WriteXML{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(directoryPath + "graph.xml"));
+            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+            Date now = new Date();
+            String strDate = sdfDate.format(now);
+            StreamResult result = new StreamResult(new File(directoryPath + "/graph" + strDate +  ".xml"));
             transformer.transform(source,result);
         }catch (Exception var12){
             var12.printStackTrace();
