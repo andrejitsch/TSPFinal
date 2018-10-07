@@ -48,8 +48,8 @@ public class TravellingSalesmanProblem
 
         for (int i = 0; i < nodes.length; i++)
         {
-            int xPos = r.nextInt(1024);
-            int yPos = r.nextInt(800);
+            int xPos = r.nextInt(800);
+            int yPos = r.nextInt(600);
 
             nodes[i] = new Nodes(i, "Node" + i, xPos, yPos);
 
