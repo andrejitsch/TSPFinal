@@ -50,7 +50,7 @@ public class Gui extends Application
         VBox buttonBox = new VBox(20);
         buttonBox.setPadding(new Insets(20));
         Button start = new Button("Start the Algorithm");
-        Button clear = new Button("Clear the Graph");
+        Button applyChanges = new Button("Apply Changes");
         ChoiceBox<String> algorithm = new ChoiceBox<>();
         algorithm.getItems().add("Nearest Neighbour");
         algorithm.getItems().add("Brute-Force");
@@ -59,7 +59,7 @@ public class Gui extends Application
         CheckBox cb2 = new CheckBox("Show the names of the Nodes");
         cb1.setSelected(false);
         cb2.setSelected(false);
-        buttonBox.getChildren().addAll(algorithm, start, clear, cb1, cb2);
+        buttonBox.getChildren().addAll(algorithm, start, applyChanges, cb1, cb2);
         Label label = new Label();
         label.setAlignment(Pos.CENTER);
         label.setPadding(new Insets(0, 100, 15, 100));
@@ -115,7 +115,7 @@ public class Gui extends Application
                 tsp = new TravellingSalesmanProblem(nodesA.size());
                 tsp.convertNodes(nodesA);
                 tsp.createEdges();
-                tsp.paintGraph(root);
+                tsp.paintGraph(root, cb1.isSelected(), cb2.isSelected());
             }
 
         });
@@ -124,10 +124,11 @@ public class Gui extends Application
          * Clear-Button: Deletes all Nodes and Edges from the Graph
          */
 
-        clear.setOnAction(u ->
+        applyChanges.setOnAction(u ->
         {
             root.getChildren().clear();
             label.setText("");
+            tsp.paintGraph(root, cb1.isSelected(), cb2.isSelected());
         });
 
         /**
@@ -185,7 +186,7 @@ public class Gui extends Application
                     label.setText("");
                     tsp = new TravellingSalesmanProblem(Integer.parseInt(nodes.getText()));
                     tsp.fillRandom();
-                    tsp.paintGraph(root);
+                    tsp.paintGraph(root, cb1.isSelected(), cb2.isSelected());
                     newWindow.close();
                 }
 
@@ -197,7 +198,7 @@ public class Gui extends Application
                 public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
                                     Boolean newValue)
                 {
-                    
+
                 }
             });
 

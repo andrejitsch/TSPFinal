@@ -306,7 +306,7 @@ public class TravellingSalesmanProblem
     }
 
 
-    public void paintGraph(Pane pane)
+    public void paintGraph(Pane pane, boolean w, boolean n)
     {
         for (int i=0; i<getAmountNodes(); i++)
         {
@@ -320,6 +320,9 @@ public class TravellingSalesmanProblem
                 break;
             }else {
                 edges[i].paintEdges(pane);
+                if(w==true){
+                    edges[i].paintWeights(pane);
+                }
             }
         }
     }
