@@ -6,8 +6,6 @@ import java.util.Collections;
  */
 public class BruteForce
 {
-    TravellingSalesmanProblem salesmanProblem;
-    static int permutationNumb = 1;
 
     ArrayList<Route> shortestRoutes = new ArrayList<Route>();
 
@@ -44,11 +42,11 @@ public class BruteForce
             double returnValue = 0;
             if (nodeIndex<amountNodes-1)
             {
-                returnValue = salesmanProblem.calculateDistance(route.getNodes().get(nodeIndex).getNumber(), route.getNodes().get(nodeIndex +1).getNumber());
+                returnValue = x.measureDistanceForBruteForce(route.getNodes().get(nodeIndex + 1));
             }
 
             return returnValue;
-        }).sum() + salesmanProblem.calculateDistance(route.getNodes().get(0).getNumber(), route.getNodes().get(amountNodes -1).getNumber()));
+        }).sum() + route.getNodes().get(0).measureDistanceForBruteForce(route.getNodes().get(amountNodes -1)));
     }
 
     public String getTotalDistance(Route route)

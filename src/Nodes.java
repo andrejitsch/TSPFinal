@@ -86,6 +86,20 @@ public class Nodes extends Circle
     }
 
     /**
+     * This method calculates Distance in the Tours for the BruteForce.
+     * @param node needs the next Node.
+     * @return the distance between these two.
+     */
+    public double measureDistanceForBruteForce(Nodes node)
+    {
+        double deltaXpos = (node.getXpos() - this.getXpos());
+        double deltaYpos = (node.getXpos() - this.getYpos());
+        double dx2 = deltaXpos * deltaXpos;
+        double dy2 = deltaYpos * deltaYpos;
+        return Math.sqrt(dx2 + dy2);
+    }
+
+    /**
      * Sets the number for the node.
      * @param nb the number to set for the node.
      */
