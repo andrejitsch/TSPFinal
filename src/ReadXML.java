@@ -35,7 +35,6 @@ public class ReadXML
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("Node");
-            ArrayList<Nodes> nodes = new ArrayList<>();
             for (int i=0; i<nList.getLength(); i ++)
             {
                 Node nNode = nList.item(i);
