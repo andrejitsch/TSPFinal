@@ -16,16 +16,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Project TravellingSalesmanProblem
- * This class is used to create Nodes for the Graph
+ * Project TravellingSalesmanProblem This class is used to create Nodes for the Graph
  *
  * @Author Andrej Drobin
  * @Author Deniz Kücüktas
  * @Author Julian Geerdes
  * @Date 28.05.2018
- * @Version 1.1
- * Last Change: 28.09.2018
- *
+ * @Version 1.1 Last Change: 28.09.2018
  */
 public class Nodes extends Circle
 {
@@ -154,15 +151,11 @@ public class Nodes extends Circle
         return number;
     }
 
-
-
     /**
      * Sets the name for the node.
      *
      * @param n the name to set the name.
      */
-
-
 
     /**
      * Gets the name of the node.

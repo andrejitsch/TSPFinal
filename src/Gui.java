@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,16 +20,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Project TravellingSalesmanProblem
- * This class is used to initiate the GUI
+ * Project TravellingSalesmanProblem This class is used to initiate the GUI
  *
  * @Author Andrej Drobin
  * @Author Deniz Kücüktas
  * @Author Julian Geerdes
  * @Date 28.05.2018
- * @Version 1.1
- * Last Change: 28.09.2018
- *
+ * @Version 1.1 Last Change: 28.09.2018
  */
 public class Gui extends Application
 {

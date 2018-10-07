@@ -11,16 +11,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * Project TravellingSalesmanProblem
- * This class is used to write the Graph with its Nodes and Edges into an XML-File
+ * Project TravellingSalesmanProblem This class is used to write the Graph with its Nodes and Edges
+ * into an XML-File
  *
  * @Author Andrej Drobin
  * @Author Deniz Kücüktas
  * @Author Julian Geerdes
  * @Date 28.05.2018
- * @Version 1.1
- * Last Change: 28.09.2018
- *
+ * @Version 1.1 Last Change: 28.09.2018
  */
 
 public class WriteXML
@@ -28,8 +26,9 @@ public class WriteXML
 
     /**
      * This method is used to create the XML-File
+     *
      * @param salesmanProblem needs a given Graph
-     * @param directoryPath needs the directoryPath where to save the file
+     * @param directoryPath   needs the directoryPath where to save the file
      */
     public void createXML(TravellingSalesmanProblem salesmanProblem, String directoryPath)
     {

@@ -11,16 +11,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Project TravellingSalesmanProblem
- * This class is used to parse a XML-File into a Graph
+ * Project TravellingSalesmanProblem This class is used to parse a XML-File into a Graph
  *
  * @Author Andrej Drobin
  * @Author Deniz Kücüktas
  * @Author Julian Geerdes
  * @Date 28.05.2018
- * @Version 1.1
- * Last Change: 28.09.2018
- *
+ * @Version 1.1 Last Change: 28.09.2018
  */
 public class ReadXML
 {
