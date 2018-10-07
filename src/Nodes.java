@@ -26,9 +26,7 @@ public class Nodes extends Circle
     public int next;
     public boolean inTour;
     public boolean firstNode;
-
-    //hashset for the Edges, no duplicates
-    public final Set<Edges> edges = new HashSet<>();
+    
 
     /**
      * This is the Constructor of Nodes.

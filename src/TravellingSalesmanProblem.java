@@ -48,39 +48,7 @@ public class TravellingSalesmanProblem
         }
 
         createEdges();
-        /*for (int i=0; i<getAmountEdges(); i++)
-        {
-            int s = r.nextInt(getAmountNodes());
-            int t = r.nextInt(getAmountNodes());
 
-            int counter = 0;
-
-            // if source and target are equal
-            while (s == t && counter < 1000)
-            {
-                t = r.nextInt(getAmountNodes());
-                counter++;
-            }
-
-            //not equal
-            if (s != t)
-            {
-                Edges newEdges = new Edges(nodes[s], nodes[t], getWeight(calculateDistance(s, t)));
-                edges[i] = newEdges;
-
-                if (nodes[s].edges.contains(newEdges))
-                {
-                    i--;
-
-                    continue;
-                }else {
-                    nodes[s].edges.add(newEdges);
-                    nodes[t].edges.add(newEdges);
-
-                    System.out.println(newEdges);
-
-                }
-            }*/
 
     }
 
