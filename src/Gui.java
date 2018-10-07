@@ -21,7 +21,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by AS on 07.10.2018.
+ * Project TravellingSalesmanProblem
+ * This class is used to initiate the GUI
+ *
+ * @Author Andrej Drobin
+ * @Author Deniz Kücüktas
+ * @Author Julian Geerdes
+ * @Date 28.05.2018
+ * @Version 1.1
+ * Last Change: 28.09.2018
+ *
  */
 public class Gui extends Application
 {
@@ -63,7 +72,6 @@ public class Gui extends Application
         Label label = new Label();
         label.setAlignment(Pos.CENTER);
         label.setPadding(new Insets(0, 100, 15, 100));
-        Label label2 = new Label();
         mainRoot.setCenter(root);
         mainRoot.setBottom(label);
         mainRoot.setRight(buttonBox);
@@ -103,12 +111,12 @@ public class Gui extends Application
             root.requestFocus();
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialDirectory(new File(Paths.get("").toAbsolutePath().toString()));
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("XML-Files", "*.xml")
-            );
+            fileChooser.getExtensionFilters()
+                    .addAll(new FileChooser.ExtensionFilter("XML-Files", "*.xml"));
             File file = fileChooser.showOpenDialog(primaryStage);
 
-            if(file!=null){
+            if (file != null)
+            {
                 root.getChildren().clear();
                 ReadXML readXML = new ReadXML();
                 ArrayList<Nodes> nodesA = readXML.readNodes(file);
@@ -178,8 +186,7 @@ public class Gui extends Application
                 {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Dialog");
-                    alert.setHeaderText(
-                            "Number of Nodes has to be >2!");
+                    alert.setHeaderText("Number of Nodes has to be >2!");
                     alert.showAndWait();
                 } else
                 {
@@ -191,16 +198,6 @@ public class Gui extends Application
                     newWindow.close();
                 }
 
-            });
-
-            cb1.selectedProperty().addListener(new ChangeListener<Boolean>()
-            {
-                @Override
-                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
-                                    Boolean newValue)
-                {
-
-                }
             });
 
             /**
@@ -226,7 +223,7 @@ public class Gui extends Application
         });
 
         /**
-         * Start-Button: Checks what Algorithm is chosen and starts the Algorithm
+         * Start-Button: Checks what Algorithm is chosen and starts the chosen Algorithm
          */
 
         start.setOnAction(s ->
@@ -253,9 +250,8 @@ public class Gui extends Application
                     root.getChildren().add(line);
                 } while (next != 0);
                 label.setText("");
-                label.setText(
-                        tsp.getTime(startInstant) + " Distance of the Tour: " + Double.toString(tsp.allCost()));
-
+                label.setText(tsp.getTime(startInstant) + " Distance of the Tour: " +
+                        Double.toString(tsp.allCost()));
 
             } else
             {
@@ -270,11 +266,15 @@ public class Gui extends Application
                     for (int j = 0; j < shortestRoute.size() - 1; j++)
                     {
                         int count = 1;
-                        Line lineBruteForce = new Line(shortestRoute.get(j).getXpos(), shortestRoute.get(j).getYpos(),
-                                shortestRoute.get(j + count).getXpos(), shortestRoute.get(j + count).getYpos());
-                        Line lineLastToFirstNode = new Line(shortestRoute.get(shortestRoute.size() - 1).getXpos(),
-                                shortestRoute.get(shortestRoute.size() - 1).getYpos(), shortestRoute.get(0).getXpos(),
-                                shortestRoute.get(0).getYpos());
+                        Line lineBruteForce = new Line(shortestRoute.get(j).getXpos(),
+                                shortestRoute.get(j).getYpos(),
+                                shortestRoute.get(j + count).getXpos(),
+                                shortestRoute.get(j + count).getYpos());
+                        Line lineLastToFirstNode =
+                                new Line(shortestRoute.get(shortestRoute.size() - 1).getXpos(),
+                                        shortestRoute.get(shortestRoute.size() - 1).getYpos(),
+                                        shortestRoute.get(0).getXpos(),
+                                        shortestRoute.get(0).getYpos());
                         lineBruteForce.setStrokeWidth(3);
                         lineLastToFirstNode.setStrokeWidth(3);
                         lineBruteForce.setStroke(Color.GREEN);
@@ -285,17 +285,12 @@ public class Gui extends Application
 
                     }
                 }
-                /*ArrayList<Route> test = new ArrayList<>();
-                for(int i = 0; i<shortestRoutes.size()-1; i++){
-                    if(bruteForce.calculateTotalDistance(shortestRoutes.get(i)) < bruteForce.calculateTotalDistance(currentRoute)){
-                        test.add(shortestRoutes.get(i));
-                    }
-                }*/
+
                 String distance = bruteForce.getTotalDistance(shortestRoutes.get(0));
 
                 label.setText("");
-                label.setText(tsp.getTime(startInstant) + " Distance of the shortest Route: " +
-                        distance);
+                label.setText(
+                        tsp.getTime(startInstant) + " Distance of the shortest Route: " + distance);
             }
 
         });

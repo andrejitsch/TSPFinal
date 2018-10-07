@@ -1,6 +1,7 @@
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -8,7 +9,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by AS on 03.10.2018.
+ * Project TravellingSalesmanProblem
+ * This class is used to initiate the Graph
+ *
+ * @Author Andrej Drobin
+ * @Author Deniz Kücüktas
+ * @Author Julian Geerdes
+ * @Date 28.05.2018
+ * @Version 1.1
+ * Last Change: 28.09.2018
+ *
  */
 
 public class TravellingSalesmanProblem
@@ -389,21 +399,7 @@ public class TravellingSalesmanProblem
 
 
 
-    /**
-     * Only for testing
-     */
-    public void createGivenGraph()
-    {
-        nodes[0] = new Nodes(0, "A", 50, 150);
-        nodes[1] = new Nodes(1, "E", 150, 280);
-        nodes[2] = new Nodes(2, "F", 300, 280);
-        nodes[3] = new Nodes(3, "D", 450, 150);
-        nodes[4] = new Nodes(4, "B", 150, 50);
-        nodes[5] = new Nodes(5, "C", 300, 50);
 
-        createEdges();
-
-    }
 
 
 

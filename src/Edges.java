@@ -117,6 +117,15 @@ public class Edges extends Line
 
 
     /**
+     * Set a weight to the Edges.
+     * @param w need a number.
+     */
+    public void setWeight(int w)
+    {
+        this.weight = w;
+    }
+
+    /**
      * ToString method for the Edges.
      * @return sourceNode -> targetNode, weight
      */

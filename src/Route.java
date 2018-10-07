@@ -2,7 +2,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by AS on 06.10.2018.
+ * Project TravellingSalesmanProblem
+ * This class is used to create Routes for the Brute-Force Algorithm
+ *
+ * @Author Andrej Drobin
+ * @Author Deniz Kücüktas
+ * @Author Julian Geerdes
+ * @Date 24.08.2018
+ * @Version 1.1
+ * Last Change: 28.09.2018
+ *
  */
 public class Route
 {

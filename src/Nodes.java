@@ -16,7 +16,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * This class represented the nodes of the graph.
+ * Project TravellingSalesmanProblem
+ * This class is used to create Nodes for the Graph
+ *
+ * @Author Andrej Drobin
+ * @Author Deniz Kücüktas
+ * @Author Julian Geerdes
+ * @Date 28.05.2018
+ * @Version 1.1
+ * Last Change: 28.09.2018
+ *
  */
 public class Nodes extends Circle
 {
@@ -29,12 +38,14 @@ public class Nodes extends Circle
     public boolean firstNode;
 
 
+
     /**
      * This is the Constructor of Nodes.
+     *
      * @param nb the node needs a number(int).
-     * @param n the node needs a name(String).
-     * @param x the node needs a x position(int).
-     * @param y the node need a y position(int).
+     * @param n  the node needs a name(String).
+     * @param x  the node needs a x position(int).
+     * @param y  the node need a y position(int).
      */
     public Nodes(int nb, String n, int x, int y)
     {
@@ -48,10 +59,13 @@ public class Nodes extends Circle
         firstNode = false;
     }
 
+
+
     /**
-     * This method is need to generate the xml structure with their tags.
-     * Structure would be: <Nodes><Node><Name></Name><X></X><Y></Y></Node></Nodes>
-     * @param doc needs the Document to put the Elements in the doc.
+     * This method is need to generate the xml structure with their tags. Structure would be:
+     * <Nodes><Node><Name></Name><X></X><Y></Y></Node></Nodes>
+     *
+     * @param doc   needs the Document to put the Elements in the doc.
      * @param nodes need a Element to create an Element in the doc.
      */
     public void generateXML(Document doc, Element nodes)
@@ -69,22 +83,41 @@ public class Nodes extends Circle
         node.appendChild(yPos);
     }
 
+
+
+    /**
+     * This method is used to paint all Nodes
+     *
+     * @param pane needs a pane to paint the Nodes on.
+     */
+
     public void paintNodes(Pane pane)
     {
-        Circle circle = new Circle(getXpos(),getYpos(),10);
+        Circle circle = new Circle(getXpos(), getYpos(), 10);
         circle.setFill(Color.BLACK);
         pane.getChildren().add(circle);
 
     }
 
+
+
+    /**
+     * This method is used to paint the Names under the Nodes
+     *
+     * @param pane needs a pane to paint the Name of the Nodes on.
+     */
+
     public void paintNodeNames(Pane pane)
     {
-        Text text = new Text(getXpos()-getName().length()*4, getYpos()+20, getName());
+        Text text = new Text(getXpos() - getName().length() * 4, getYpos() + 20, getName());
         pane.getChildren().add(text);
     }
 
+
+
     /**
-     * This method calculates Distance in the Tours for the BruteForce.
+     * This method calculates Distance for the BruteForce-Algorithm.
+     *
      * @param node needs the next Node.
      * @return the distance between these two.
      */
@@ -92,13 +125,16 @@ public class Nodes extends Circle
     {
         double deltaXpos = (node.getXpos() - this.getXpos());
         double deltaYpos = (node.getXpos() - this.getYpos());
-        double dx2 = (deltaXpos * deltaXpos)/10;
-        double dy2 = (deltaYpos * deltaYpos)/10;
+        double dx2 = (deltaXpos * deltaXpos) / 10;
+        double dy2 = (deltaYpos * deltaYpos) / 10;
         return Math.sqrt(dx2 + dy2);
     }
 
+
+
     /**
      * Sets the number for the node.
+     *
      * @param nb the number to set for the node.
      */
     public void setNumber(int nb)
@@ -106,8 +142,11 @@ public class Nodes extends Circle
         this.number = nb;
     }
 
+
+
     /**
      * Gets the number for the node.
+     *
      * @return the number of the node.
      */
     public int getNumber()
@@ -115,13 +154,19 @@ public class Nodes extends Circle
         return number;
     }
 
+
+
     /**
      * Sets the name for the node.
+     *
      * @param n the name to set the name.
      */
 
+
+
     /**
      * Gets the name of the node.
+     *
      * @return the name of the node.
      */
     public String getName()
@@ -129,8 +174,11 @@ public class Nodes extends Circle
         return name;
     }
 
+
+
     /**
      * Sets the x position of the node.
+     *
      * @param x set the x position
      */
     public void setXpos(int x)
@@ -138,8 +186,11 @@ public class Nodes extends Circle
         this.xPos = x;
     }
 
+
+
     /**
      * Gets the x position of the node.
+     *
      * @return get the x position.
      */
     public int getXpos()
@@ -147,8 +198,11 @@ public class Nodes extends Circle
         return xPos;
     }
 
+
+
     /**
      * Sets the y position of the node.
+     *
      * @param y set the yPos.
      */
     public void setYpos(int y)
@@ -156,8 +210,11 @@ public class Nodes extends Circle
         this.yPos = y;
     }
 
+
+
     /**
      * Gets the y position of the node.
+     *
      * @return get the y position.
      */
     public int getYpos()
@@ -165,8 +222,11 @@ public class Nodes extends Circle
         return yPos;
     }
 
+
+
     /**
      * Set the inTour true or false.
+     *
      * @param iT set true or false for the route.
      */
     public void setInTour(boolean iT)
@@ -174,8 +234,11 @@ public class Nodes extends Circle
         this.inTour = iT;
     }
 
+
+
     /**
      * Gets the value of inTour.
+     *
      * @return true or false of inTour.
      */
     public boolean getInTour()
@@ -183,8 +246,11 @@ public class Nodes extends Circle
         return inTour;
     }
 
+
+
     /**
      * Sets the node as firstNode.
+     *
      * @param fN set the firstNode true or false;
      */
     public void setFirstNode(boolean fN)
@@ -192,8 +258,11 @@ public class Nodes extends Circle
         this.firstNode = fN;
     }
 
+
+
     /**
      * Gets the state of firstNode
+     *
      * @return the true or false for firstNode
      */
     public boolean getFirstNode()
@@ -201,8 +270,11 @@ public class Nodes extends Circle
         return firstNode;
     }
 
+
+
     /**
      * Sets the next Node for the node.
+     *
      * @param n set the number of the next node.
      */
     public void setNext(int n)
@@ -210,8 +282,11 @@ public class Nodes extends Circle
         this.next = n;
     }
 
+
+
     /**
      * Gets the next node of the node.
+     *
      * @return the next node number.
      */
     public int getNext()
@@ -219,13 +294,15 @@ public class Nodes extends Circle
         return next;
     }
 
+
+
     /**
      * ToString Method for the class Nodes.
+     *
      * @return Node0: X: Y:
      */
-    @Override
-    public String toString()
+    @Override public String toString()
     {
-        return "Node" + getNumber() +":   X: " + getXpos() + ", Y: " + getYpos();
+        return "Node" + getNumber() + ":   X: " + getXpos() + ", Y: " + getYpos();
     }
 }

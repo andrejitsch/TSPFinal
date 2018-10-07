@@ -11,7 +11,16 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * Created by AS on 07.10.2018.
+ * Project TravellingSalesmanProblem
+ * This class is used to parse a XML-File into a Graph
+ *
+ * @Author Andrej Drobin
+ * @Author Deniz Kücüktas
+ * @Author Julian Geerdes
+ * @Date 28.05.2018
+ * @Version 1.1
+ * Last Change: 28.09.2018
+ *
  */
 public class ReadXML
 {
@@ -19,8 +28,10 @@ public class ReadXML
     ArrayList<Nodes> nodes = new ArrayList<Nodes>();
 
 
+
     /**
      * Creates an ArrayList of the Nodes out of the XML-File
+     *
      * @return the ArrayList of Nodes
      */
     public ArrayList<Nodes> readNodes(File inputFile)
@@ -28,14 +39,13 @@ public class ReadXML
         try
         {
 
-
             DocumentBuilderFactory dbF = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbF.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("Node");
-            for (int i=0; i<nList.getLength(); i ++)
+            for (int i = 0; i < nList.getLength(); i++)
             {
                 Node nNode = nList.item(i);
                 Element element = (Element) nNode;
@@ -49,31 +59,28 @@ public class ReadXML
 
             //Output
             System.out.println("Amount of Nodes: " + nodes.size());
-        }catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }
         return nodes;
     }
 
+
+
     /**
      * This method get the value of the searching Element.
+     *
      * @param element needs an element.
      * @param tagName needs the tagName.
      * @return the value in the tagName.
      */
     private static String readXML(Element element, String tagName)
     {
-        String tagValue = element.getElementsByTagName(tagName)
-                .item(0)
-                .getTextContent();
+        String tagValue = element.getElementsByTagName(tagName).item(0).getTextContent();
         System.out.print(" " + tagValue);
         return tagValue;
     }
-
-
-
-
 
 }
 
