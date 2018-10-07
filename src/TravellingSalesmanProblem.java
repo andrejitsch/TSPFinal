@@ -1,4 +1,6 @@
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -308,7 +310,10 @@ public class TravellingSalesmanProblem
 
     public void paintGraph(Pane pane, boolean w, boolean n)
     {
-        for (int i=0; i<getAmountNodes(); i++)
+        Circle firstCircle = new Circle(nodes[0].getXpos(), nodes[0].getYpos(), 10);
+        firstCircle.setFill(Color.GREEN);
+        pane.getChildren().add(firstCircle);
+        for (int i=1; i<getAmountNodes(); i++)
         {
             nodes[i].paintNodes(pane);
             if (n == true){
