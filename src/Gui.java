@@ -298,6 +298,7 @@ public class Gui extends Application
 
         primaryStage.setTitle("Traveling Salesman Problem");
         primaryStage.setScene(scene);
+        scene.getStylesheets().add("design2.css");
         primaryStage.show();
     }
 
