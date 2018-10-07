@@ -113,35 +113,6 @@ public class Gui extends Application
                 tsp.paintGraph(root);
             }
 
-
-            //ReadXML readXML = new ReadXML();
-            //ArrayList<Nodes> nodesA = readXML.readNodes();
-            //System.out.println(nodesA.get(0).getName());
-            //tsp = new TravellingSalesmanProblem(nodesA.size());
-            // tsp.convertNodes(nodesA);
-            //tsp.createEdges();
-            // tsp.paintGraph(root);
-            //tsp.convertEdges(edgesA);
-            /*for (int i = 1; i < tsp.getAmountNodes(); i++)
-            {
-                Circle firstCircle = new Circle(tsp.nodes[0].getXpos(), tsp.nodes[0].getYpos(), 10);
-                firstCircle.setFill(Color.GREEN);
-                Circle circle = new Circle(tsp.nodes[i].getXpos(), tsp.nodes[i].getYpos(), 10);
-
-                root.getChildren().add(circle);
-                root.getChildren().add(firstCircle);
-
-            }*/
-            /*for (int i = 0; i < tsp.getAmountEdges(); i++)
-           {
-                Line line = new Line(tsp.edges[i].getSourceNode().getXpos(),
-                        tsp.edges[i].getSourceNode().getYpos(),
-                        tsp.edges[i].getTargetNode().getXpos(),
-                        tsp.edges[i].getTargetNode().getYpos());
-                root.getChildren().add(line);
-                line.toBack();
-            }*/
-
         });
 
         /**
