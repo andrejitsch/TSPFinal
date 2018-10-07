@@ -70,7 +70,7 @@ public class TravellingSalesmanProblem
         int d = 1;
         for (int i = 0; i<nodes.length-1; i++){
             for (int j=d; j<nodes.length; j++){
-                edges[x]= new Edges(nodes[i], nodes[j], getWeight(calculateDistance(i,j)));
+                edges[x]= new Edges(nodes[i], nodes[j], calculateDistance(i,j));
                 x++;
             }
             d++;
@@ -262,6 +262,12 @@ public class TravellingSalesmanProblem
         nodes[s].setNext(firstNode);
     }
 
+    public void resetTour(){
+        for (int i=0; i<getAmountNodes();i++){
+            nodes[i].setInTour(false);
+        }
+    }
+
     /**
      *
      * @return The total Distance of the Tour
@@ -276,7 +282,7 @@ public class TravellingSalesmanProblem
             length += calculateDistance(i, nodes[i].next);
         }
         length += calculateDistance(getAmountNodes() - 1, 0);
-        allCosts = Math.round(length);
+        allCosts = Math.round((length/10));
         return allCosts;
     }
 

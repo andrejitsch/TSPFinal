@@ -233,7 +233,7 @@ public class Gui extends Application
             if (algorithm.getValue() == "Nearest Neighbour")
             {
                 Instant startInstant = Instant.now();
-                tsp.nearestNeighbour(1);
+                tsp.nearestNeighbour(0);
                 int next = 0;
                 int x1, y1, x2, y2;
 
@@ -247,12 +247,14 @@ public class Gui extends Application
                     y2 = tsp.nodes[next].getYpos();
                     Line line = new Line(x1, y1, x2, y2);
                     line.setStroke(Color.RED);
-                    line.setStrokeWidth(5);
+                    line.setStrokeWidth(3);
+                    line.toBack();
                     root.getChildren().add(line);
                 } while (next != 0);
                 label.setText("");
                 label.setText(
                         tsp.getTime(startInstant) + " Distance of the Tour: " + Double.toString(tsp.allCost()));
+                tsp.resetTour();
 
             } else
             {
@@ -272,12 +274,13 @@ public class Gui extends Application
                         Line linez = new Line(shortestRoute.get(shortestRoute.size() - 1).getXpos(),
                                 shortestRoute.get(shortestRoute.size() - 1).getYpos(), shortestRoute.get(0).getXpos(),
                                 shortestRoute.get(0).getYpos());
-                        linex.setStrokeWidth(5);
-                        linez.setStrokeWidth(5);
+                        linex.setStrokeWidth(3);
+                        linez.setStrokeWidth(3);
                         linex.setStroke(Color.GREEN);
                         linez.setStroke(Color.GREEN);
-                        root.getChildren().add(linex);
-                        root.getChildren().add(linez);
+                        linex.toBack();
+                        linez.toBack();
+                        root.getChildren().addAll(linex, linez);
 
                     }
                 }

@@ -14,7 +14,7 @@ public class Edges extends Line
     TravellingSalesmanProblem salesmanProblem;
     Nodes sourceNode = null;
     Nodes targetNode = null;
-    int weight;
+    double weight;
     Text textWeight;
 
 
@@ -24,11 +24,11 @@ public class Edges extends Line
      * @param sN needs a sourceNode from Nodes.
      * @param tN needs a targetNode from Nodes.
      */
-    public Edges(Nodes sN, Nodes tN, int weight)
+    public Edges(Nodes sN, Nodes tN, double weight)
     {
         this.sourceNode = sN;
         this.targetNode = tN;
-        this.weight = weight;
+        this.weight = Math.round((weight/10));
     }
 
     /**
@@ -74,7 +74,7 @@ public class Edges extends Line
      * This method returns the weight of the Edges.
      * @return the weight of the edge.
      */
-    public int getWeight()
+    public double getWeight()
     {
         return weight;
     }
