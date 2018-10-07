@@ -181,7 +181,7 @@ public class TravellingSalesmanProblem
      * @param n searching of the closest neighbour of n.
      * @return the closest neighbour that is not yet in the tour.
      */
-    private int nextNode(int n)
+    public int nextNode(int n)
     {
         double dist, min = 10000;
         int index = -1;

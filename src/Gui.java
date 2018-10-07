@@ -24,6 +24,7 @@ import java.util.Arrays;
 public class Gui extends Application
 {
     TravellingSalesmanProblem tsp;
+    NearestNeighbour nearestNeighbour;
 
 
     @Override public void start(Stage primaryStage) throws Exception
@@ -219,7 +220,7 @@ public class Gui extends Application
                 //root.getChildren().removeIf((Node t) -> t.getClass().getSimpleName().equals
                 // ("Line"));
                 Instant startInstant = Instant.now();
-                tsp.nearestNeighbour();
+                nearestNeighbour.nearestNeighbour(0);
                 int next = 0;
                 int x1, y1, x2, y2;
 

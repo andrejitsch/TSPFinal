@@ -26,7 +26,7 @@ public class Nodes extends Circle
     public int next;
     public boolean inTour;
     public boolean firstNode;
-    
+
 
     /**
      * This is the Constructor of Nodes.
