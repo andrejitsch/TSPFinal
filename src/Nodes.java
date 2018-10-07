@@ -71,16 +71,9 @@ public class Nodes extends Circle
 
     public void paintNodes(Pane pane)
     {
-        if (getFirstNode())
-        {
-            Circle firstCircle = new Circle(getXpos(), getYpos(),10);
-            firstCircle.setFill(Color.GREEN);
-            pane.getChildren().add(firstCircle);
-        }else{
-            Circle circle = new Circle(getXpos(),getYpos(),10);
-            circle.setFill(Color.BLACK);
-            pane.getChildren().add(circle);
-        }
+        Circle circle = new Circle(getXpos(),getYpos(),10);
+        circle.setFill(Color.BLACK);
+        pane.getChildren().add(circle);
 
     }
 
